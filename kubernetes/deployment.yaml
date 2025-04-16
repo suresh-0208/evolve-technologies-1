@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evolve-technologies-web-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: evolve-technologies-web
+  template:
+    metadata:
+      labels:
+        app: evolve-technologies-web
+    spec:
+      containers:
+        - name: evolve-technologies-web
+          image: umamahesh571/evolve-technologies-web
+          ports:
+            - containerPort: 8080
