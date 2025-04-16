@@ -5,12 +5,14 @@ pipeline {
         IMAGE_NAME = 'evolve-technologies-web'
         REGISTRY = 'umamahesh571'
         DOCKER_IMAGE = "${REGISTRY}/${IMAGE_NAME}"
+        REPO_URL = 'https://github.com/umamahesh571/evolve-technologies-1.git'
+        BRANCH = 'main'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/umamahesh571/evolve-technologies-1.git'
+                git branch: "${BRANCH}", url: "${REPO_URL}"
             }
         }
 
