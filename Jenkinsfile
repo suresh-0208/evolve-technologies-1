@@ -16,34 +16,26 @@ pipeline {
 
         stage('Build WAR') {
             steps {
-                script {
-                    sh 'mvn clean install -DskipTests'
-                }
+                sh 'mvn clean install -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh 'docker build -t ${DOCKER_IMAGE} .'
-                }
+                sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                script {
-                    sh 'docker push ${DOCKER_IMAGE}'
-                }
+                sh 'docker push ${DOCKER_IMAGE}'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                script {
-                    sh 'kubectl apply -f kubernetes/deployment.yaml'
-                    sh 'kubectl apply -f kubernetes/service.yaml'
-                }
+                sh 'kubectl apply -f kubernetes/deployment.yaml'
+                sh 'kubectl apply -f kubernetes/service.yaml'
             }
         }
     }
