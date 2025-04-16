@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/umamahesh571/evolve-technologies.git'
+                git 'https://github.com/umamahesh571/evolve-technologies-1.git'
             }
         }
 
